@@ -1,4 +1,7 @@
 Morepls::Application.routes.draw do
+  resources :pictures
+
+
   resources :lessons
 
   root to: 'lessons#index' 
