@@ -9,7 +9,19 @@
   <b>Description:</b>
   <%= @lesson.description %>
 </p>
+<table class="table">
+	<tr>
+		<th>Pictures</th>
+		<th>Description</th>
+	</tr>
 
+	<% @lesson.pictures.each do |picture| %>
+	<tr>
+		<td> <%= link_to picture.name, edit_lesson_picture_path(@lesson, picture)%> </td>
+		<td> <%=picture.description %></td>
+	</tr>	
+	<% end %>
+</table>
 <p>
 	<%= link_to 'New Picture', new_lesson_picture_path(@lesson) %>
 </p>
