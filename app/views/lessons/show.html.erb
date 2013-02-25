@@ -10,6 +10,10 @@
   <%= @lesson.description %>
 </p>
 
+<p>
+	<%= link_to 'New Picture', new_lesson_picture_path(@lesson) %>
+</p>
+
 
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
 <%= link_to 'Back', lessons_path %>

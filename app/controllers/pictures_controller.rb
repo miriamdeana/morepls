@@ -13,6 +13,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    #@lesson = Lesson.find(params[:lesson_id])
     @picture = Picture.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +25,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
+    @lesson = Lesson.find(params[:lesson_id])
     @picture = Picture.new
 
     respond_to do |format|
@@ -34,13 +36,15 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+    @lesson = Lesson.find(params[:lesson_id])
     @picture = Picture.find(params[:id])
   end
 
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(params[:picture])
+    @lesson = Lesson.find(params[:lesson_id])
+    @picture = @lesson.pictures.new(params[:picture])
 
     respond_to do |format|
       if @picture.save
