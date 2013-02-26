@@ -1,5 +1,5 @@
 Morepls::Application.routes.draw do
-  resources :pictures
+  resources :pictures, only: :index
 
 
   resources :lessons do
