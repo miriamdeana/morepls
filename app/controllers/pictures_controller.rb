@@ -13,7 +13,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
-    #@lesson = Lesson.find(params[:lesson_id])
+    @lesson = Lesson.find(params[:lesson_id])
     @picture = Picture.find(params[:id])
 
     respond_to do |format|
@@ -48,7 +48,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to lesson_picture_path(@lesson, @picture), notice: 'Picture was successfully created.' }
         format.json { render json: @picture, status: :created, location: @picture }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+        format.html { redirect_to lesson_picture_path(@picture.lesson, @picture), notice: 'Picture was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
